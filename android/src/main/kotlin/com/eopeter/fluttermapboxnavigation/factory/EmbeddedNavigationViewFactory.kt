@@ -16,12 +16,12 @@ class EmbeddedNavigationViewFactory(
     private val messenger: BinaryMessenger,
     private val activity: Activity
 ) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         val inflater = LayoutInflater.from(context)
         val binding = NavigationActivityBinding.inflate(inflater)
         val accessToken = PluginUtilities.getResourceFromContext(context, "mapbox_access_token")
         val view = EmbeddedNavigationMapView(
-            context,
+            context!,
             activity,
             binding,
             messenger,
